@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: url('https://photos.app.goo.gl/Ggeb5nf6ZBw8Lp457');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.content-wrapper {
+  background: rgba(219, 234, 254, 0.85);
+  min-height: 100vh;
+  backdrop-filter: blur(8px);
+}
+
+@layer components {
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 py-8;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6;
+  }
+
+  .button-base {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg 
+           transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .button-primary {
+    @apply button-base bg-blue-600 text-white hover:bg-blue-700 
+           focus:ring-blue-500;
+  }
+
+  .button-secondary {
+    @apply button-base border border-blue-600 text-blue-600 
+           hover:bg-blue-50;
+  }
+
+  .button-outline {
+    @apply button-base border border-gray-300 text-gray-700 
+           hover:bg-gray-50;
+  }
+
+  .input-base {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 
+           focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+
+  .input-error {
+    @apply border-red-500;
+  }
+
+  .error-message {
+    @apply mt-1 text-sm text-red-500;
+  }
+}
+
+@media print {
+  body {
+    background: none;
+  }
+  
+  .content-wrapper {
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+}

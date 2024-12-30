@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        ".write": "$uid === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'"
+      }
+    },
+    "companions": {
+      "$companionId": {
+        ".read": "root.child('companions').child($companionId).child('userId').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        ".write": "root.child('companions').child($companionId).child('userId').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'"
+      }
+    },
+    "reservations": {
+      "$reservationId": {
+        ".read": "root.child('reservations').child($reservationId).child('userId').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'",
+        ".write": "root.child('reservations').child($reservationId).child('userId').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin'"
+      }
+    },
+    "entries": {
+      ".read": "auth.uid !== null",
+      ".write": "root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    }
+  }
+}
